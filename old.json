@@ -1,0 +1,239 @@
+[
+  {
+    "bodyBackgroundColor": "light1",
+    "themeBorder": {
+      "border": "3px solid",
+      "borderColor": "light2",
+      "backgroundColor": "TURTLE"
+    },
+    "h1": {
+      "@media (max-width: 479px)": {
+        "lineHeight": "55px",
+        "fontSize": "45px"
+      },
+      "@media (max-width: 767px)": {
+        "lineHeight": "65px",
+        "fontSize": "55px"
+      },
+      "lineHeight": "80px",
+      "fontSize": "70px",
+      "fontFamily": "primaryFont",
+      "color": "dark1"
+    },
+    "h2": {
+      "margin": "20px 0 10px",
+      "lineHeight": "50px",
+      "fontSize": "40px",
+      "fontFamily": "primaryFont",
+      "color": "dark1"
+    },
+    "checkboxLabel": {
+      "color": "dark2",
+      "fontFamily": "primaryFont"
+    },
+    "h3": {
+      "lineHeight": "36px",
+      "fontSize": "26px",
+      "fontFamily": "primaryFont",
+      "color": "dark2"
+    },
+    "h4": {
+      "lineHeight": "60px",
+      "fontSize": "50px",
+      "fontFamily": "primaryFont",
+      "color": "dark1"
+    },
+    "h5": {
+      "lineHeight": "30px",
+      "fontSize": "20px",
+      "fontFamily": "primaryFont",
+      "color": "dark2"
+    },
+    "moduleDefault": {
+      "color": "dark1",
+      "margin": "25px 0",
+      "fontFamily": "primaryFont"
+    },
+    "h6": {
+      "lineHeight": "28px",
+      "fontSize": "18px",
+      "fontFamily": "primaryFont",
+      "color": "light3"
+    },
+    "colors": {
+      "dark": {
+        "color1": "#27272c",
+        "black": "#000",
+        "color2": "#717985",
+        "color3": "#8888a0"
+      },
+      "accent": {
+        "color1": "#673ab7",
+        "color2": "#d81b60",
+        "color3": "#ffc107"
+      },
+      "light": {
+        "color1": "#ffffff",
+        "color2": "#eee",
+        "white": "#fff",
+        "color3": "#ccc"
+      }
+    },
+    "checkboxInput": {
+      "marginRight": "5px",
+      "marginLeft": "5px"
+    },
+    "formErrorMessage": {
+      "color": "red",
+      "lineHeight": "22px",
+      "fontSize": "12px"
+    },
+    "fontFamily": {
+      "primaryFont": "'IBM Plex Sans', sans-serif",
+      "secondaryFont": "'IBM Plex Sans', sans-serif"
+    },
+    "fonts": [
+      "IBM Plex Sans",
+      "IBM Plex Sans"
+    ],
+    "divider": {
+      "width": "200px",
+      "backgroundColor": "dark1",
+      "margin": "35px auto",
+      "height": "3px"
+    },
+    "button1": {
+      "border": "3px solid",
+      "padding": "0 60px",
+      "backgroundColor": "accent1",
+      "borderColor": "accent1",
+      "color": "light1",
+      "textAlign": "center",
+      "display": "inline-block",
+      "transition": "all 0.3s linear 0s",
+      "fontFamily": "primaryFont",
+      "borderRadius": "4px",
+      "fontSize": "16px",
+      "lineHeight": "50px",
+      "fontWeight": "bold"
+    },
+    "button2": {
+      "padding": "0px 60px",
+      "backgroundColor": "accent3",
+      "borderColor": "accent3",
+      "fontFamily": "primaryFont",
+      "color": "light1",
+      "borderRadius": "4px",
+      "display": "inline-block",
+      "fontSize": "20px",
+      "lineHeight": "50px",
+      "fontWeight": "bold",
+      "transition": "all 0.3s linear 0s"
+    },
+    "submitButton": {
+      "border": "none",
+      "padding": "10px 25px",
+      "borderColor": "accent2",
+      "backgroundColor": "accent2",
+      "fontFamily": "primaryFont",
+      "color": "light1",
+      "fontWeight": "700"
+    },
+    "button3": {
+      "padding": "0 70px",
+      "backgroundColor": "accent1",
+      "borderColor": "accent1",
+      "fontFamily": "primaryFont",
+      "color": "white",
+      "borderRadius": "8px",
+      "display": "inline-block",
+      "fontSize": "20px",
+      "lineHeight": "50px",
+      "transition": "all 0.3s",
+      "fontWeight": "bold",
+      "height": "70px"
+    },
+    "radioInput": {
+      "marginRight": "5px",
+      "marginLeft": "5px"
+    },
+    "label": {
+      "lineHeight": "26px",
+      "fontSize": "16px",
+      "marginBottom": "5px",
+      "fontFamily": "primaryFont",
+      "color": "dark2",
+      "fontWeight": "bold"
+    },
+    "list": {
+      "marginBottom": "20px",
+      "fontFamily": "primaryFont",
+      "color": "dark2",
+      "paddingLeft": "30px"
+    },
+    "selectInput": {
+      "padding": "10px",
+      "backgroundColor": "white",
+      "borderColor": "dark2",
+      "appearance": "none",
+      "fontFamily": "primaryFont",
+      "color": "dark2",
+      "borderRadius": "2px",
+      "width": "100%",
+      "opactiy": "0",
+      "height": "40px"
+    },
+    "p": {
+      "margin": "10px 0",
+      "lineHeight": "25px",
+      "fontSize": "17px",
+      "fontFamily": "primaryFont",
+      "color": "dark2"
+    },
+    "input": {
+      "border": "1px solid",
+      "padding": "8px 12px",
+      "backgroundColor": "light1",
+      "borderColor": "dark2",
+      "color": "dark1",
+      "::placeholder": {
+        "color": "dark2"
+      },
+      "fontFamily": "primaryFont",
+      "borderRadius": "2px",
+      "width": "100%",
+      "fontSize": "16px",
+      "marginBottom": "10px",
+      "lineHeight": "16px",
+      "fontWeight": "bold",
+      "height": "38px"
+    },
+    "form": {
+      "width": "100%",
+      "padding": "30px",
+      "height": "auto"
+    },
+    "radioLabel": {
+      "color": "dark2",
+      "fontFamily": "primaryFont"
+    },
+    "textArea": {
+      "border": "1px solid",
+      "padding": "8px 12px",
+      "backgroundColor": "white",
+      "borderColor": "dark2",
+      "color": "dark1",
+      "::placeholder": {
+        "backgroundColor": "white",
+        "borderColor": "dark1",
+        "fontFamily": "primaryFont",
+        "color": "dark2"
+      },
+      "borderRadius": "2px",
+      "width": "100%",
+      "fontSize": "16px",
+      "marginBottom": "10px",
+      "lineHeight": "16px"
+    }
+  }
+]
