@@ -31,7 +31,7 @@ class ConvertToTheme {
     get colors() {
         return this._getColorMaps()
     }
-
+    //function for getter colors
     _getColorMaps() {
         let colorKeys = Object.keys(this.theme.colors)
         let colorObj = {}
@@ -49,7 +49,7 @@ class ConvertToTheme {
     get fonts() {
         return this._getFontMap()
     }
-
+    //function for getter fonts
     _getFontMap() {
         //init obj
         let fontObj = {}
@@ -67,36 +67,44 @@ class ConvertToTheme {
             ...this.replaceSecondaryFont && {"secondaryFont": "primaryFont"}
         }
     };
-
+    //adds to array of non-globals
     updateNonGlobals(key) {
         if (this.nonGlobals[key]) this.nonGlobals[key]++
         else this.nonGlobals[key] = 1
     }
 
     generateReport() {
+        //theme name
         console.log('THEME::', this.themeName, "\n")
+        //log the colors that aren't in the global color scheme
         console.log("\n", "Colors not in presets:", "\n")
         Object.keys(this.nonGlobals).forEach(key => {
             console.log(`color ${key} is used ${this.nonGlobals[key]} times`)
         })
-
+        //log the global color scheme
         console.log("\n", "Current Color Presets", "\n")
 
         Object.keys(this.colors).forEach(key => {
             console.log(`${this.colors[key]}:${key}`)
         })
+
+        //log number of changes
         console.log("\n", convertedTheme.changes + " Changes")
     }
-
+    //checks if background key should be "backgroundColor" and converts it
     handleBackgroundKey(obj) {
-        if(obj.background.includes("url") || obj.background.includes("gradient")  )
+        //if img or gradient, re skip it
+        if(obj.background.includes("url") || obj.background.includes("gradient")  ) return obj;
+        //if there isn't a background color already assigned we assign it to the background color
         if (!obj.hasOwnProperty("backgroundColor")) {
             obj.backgroundColor = obj.background;
         }
+        //delete background key
         delete obj.background;
+        //return it
         return obj
     }
-
+    //iterates through keys and converts static values into global variables
     checkForGlobalValues(obj) {
 
         if (!obj) return
@@ -107,44 +115,51 @@ class ConvertToTheme {
 
         let keys = Object.keys(obj);
 
-        var deleteKeys = ['alternate', 'backgroundColors', 'button1a', 'button2a', 'button3a', 'textColors']
+        //keys to delete
+        const deleteKeys = ['alternate', 'backgroundColors', 'button1a', 'button2a', 'button3a', 'textColors']
+        //keys to ignore
+        const skipKeys = ['fonts', 'colors'];
 
         keys.forEach(key => {
+            //find keys to remove and remove them
             if (deleteKeys.indexOf(key) != -1) {
                 this.changes ++
                 return delete obj[key];
             }
-
+            //if background is key, run the background handler
+            //this will convert background to backgroundColor if its a color
             if (key === "background") {
                 this.changes ++
                 obj = this.handleBackgroundKey(obj)
             }
-
-            if ((key === "fontFamily" && typeof obj[key] === "object") || key === "fonts" || key === "colors") return;
+            //skip these keys as they are meta data
+            if ((key === "fontFamily" && typeof obj[key] === "object") || skipKeys.indexOf(key) != -1) return;
+            //if its an object re recurse
             if (typeof obj[key] === "object") return this.checkForGlobalValues(obj[key])
-
+            //get value
             let value = obj[key];
-
+            //convert to lower case if its a hex code
             if (`${value}`.includes("#")) value = value.toLowerCase();
-
+            //check if its in the conversions map anc convert it
             if (this.conversionMap[value]) {
                 this.changes ++
                 obj[key] = this.conversionMap[obj[key]]
                 return
             }
-
+            //if its a color but not in the globals, we add it to the report
             if (`${obj[key]}`.includes('#')) this.updateNonGlobals(obj[key])
-        })
+        });
 
+        //return it
         return obj
 
     }
 
     searchPageForGlobals() {
 
-        
+        //run the check and conversion
         let obj = this.page.map(obj => this.checkForGlobalValues(obj));
-
+        //write it to the fs
         fs.writeFileSync('new.json', JSON.stringify(obj))
 
     }
@@ -153,23 +168,6 @@ class ConvertToTheme {
 }
 
 const convertedTheme = new ConvertToTheme(theme, page, true, "Vitamin D")
-convertedTheme.searchPageForGlobals()
-convertedTheme.generateReport()
+convertedTheme.searchPageForGlobals();
+convertedTheme.generateReport();
 
-
-
-// const stargazerTheme = new ConvertToTheme(stargazer, [{...stargazer}], false, "Stargazer")
-// stargazerTheme.searchPageForGlobals()
-// stargazerTheme.generateNonGlobalsReport()
-
-// const smartCookieTheme = new ConvertToTheme(smartCookie, [{...smartCookie}, false, "Smart Cookie"])
-// smartCookieTheme.searchPageForGlobals()
-// smartCookieTheme.generateNonGlobalsReport()
-
-// const wandererTheme = new ConvertToTheme(wanderer, [{...wanderer}], false, "Wanderer")
-// wandererTheme.searchPageForGlobals()
-// wandererTheme.generateNonGlobalsReport()
-
-// const vitaminDTheme = new ConvertToTheme(vitaminD, [{...vitaminD}], false, "Vitamin D")
-// vitaminDTheme.searchPageForGlobals()
-// vitaminDTheme.generateNonGlobalsReport()
